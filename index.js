@@ -9,7 +9,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "get":
-      const contact = await contacts.getContactById(id);
+      const contact = await contacts.getContactById(id.toString());
       console.log(contact);
       break;
 
@@ -20,7 +20,7 @@ async function invokeAction({ action, id, name, email, phone }) {
       break;
 
     case "remove":
-      await contacts.removeContact(id);
+      await contacts.removeContact(id.toString());
       const contactsAfterRemove = await contacts.listContacts();
       console.table(contactsAfterRemove);
       break;
@@ -31,12 +31,3 @@ async function invokeAction({ action, id, name, email, phone }) {
 }
 
 invokeAction(argv);
-// invokeAction({ action: "list" });
-// invokeAction({
-//   action: "add",
-//   name: "Mango",
-//   email: "Mango@i.ua",
-//   phone: "111-11-11",
-// });
-// invokeAction({ action: "remove", id: "f8jpiye5BlKJazQKiBBWb" });
-// invokeAction({ action: "get", id: "3" });
